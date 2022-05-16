@@ -11,12 +11,12 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Sistema de Login</title>
 </head>
 
 <body>
-    <section class="h-100">
+    <section class="h-100 bg">
         <div class="container h-100%">
             <div class="row justify-content-sm-center align-items-center vh-100">
                 <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
@@ -53,9 +53,9 @@ session_start();
                                 <div class="d-flex align-items-center">
                                     <div class="form-check">
                                         <input type="checkbox" name="remember" id="remember" class="form-check-input">
-                                        <label for="remember" class="form-check-label">Remember Me</label>
+                                        <label for="remember" class="form-check-label">Manter conectado</label>
                                     </div>
-                                    <button type="submit" class="btn btn-primary ms-auto">
+                                    <button type="submit" class="btn btn-primary ms-auto btnmain">
                                         Login
                                     </button>
                                 </div>
@@ -72,7 +72,9 @@ session_start();
         </div>
     </section>
 
-    <script src="js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
