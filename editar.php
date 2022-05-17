@@ -13,12 +13,13 @@ if(isset($_GET['codigo'])){
 if(isset($_POST['codigo'])){
     $codigo = $_POST['codigo'];
     $titulo = $_POST['titulo'];
-    $autor = $_POST['editora'];
+    $autor = $_POST['autor'];
+    $editora = $_POST['editora'];
     $paginas = $_POST['paginas'];
     $publicacao = $_POST['publicacao'];
     $publicacao = date("Y-m-d",strtotime(str_replace('/','-',$publicacao))); 
 
-    $sql = "UPDATE livros SET codigo = '$codigo', titulo = '$titulo', autor = '$autor', paginas = '$paginas', publicacao = '$publicacao' WHERE codigo = '$id'";
+    $sql = "UPDATE livros SET codigo = '$codigo', titulo = '$titulo', autor = '$autor', editora = '$editora', paginas = '$paginas', publicacao = '$publicacao' WHERE codigo = '$id'";
     if(mysqli_query($conexao, $sql)){
         $_SESSION['msg'] = "Atualizado com Sucesso!";
 
@@ -59,7 +60,7 @@ if(isset($_POST['codigo'])){
         <h4 class="center">TELA DE EDIÇÃO</h4><BR>
         <form method="post" action="">
 
-        <div>
+            <div>
                 <h5>Código</h5>
                 <input type="text" name="codigo" value=" <?php echo $dados["codigo"] ?> ">
             </div>
@@ -85,11 +86,11 @@ if(isset($_POST['codigo'])){
             </div>
             <button class="waves-effect waves-light black btn" style="width:100%" type="submit"> ATUALIZAR </button>
             <a href="home.php" class="waves-effect waves-light blue btn" style="width:100%"> VOLTAR </a>
- 
 
 
-        <!--JavaScript at end of body for optimized loading-->
-        <script type="text/javascript" src="js/materialize.min.js"></script>
+
+            <!--JavaScript at end of body for optimized loading-->
+            <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 
 </html>
