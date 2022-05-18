@@ -49,7 +49,7 @@
                                 <i class='bx bx-plus accordion__icon'></i>
                                 <h3 class='accordion__title'>". $res['codigo']. " - ". $res['titulo']. "</h3>
                                 <a href='deletar.php?codigo=". $res['codigo'] ."' class='btn-floating red'><i class='material-icons'>close</i></a>
-                                <a href='editar.php?codigo=". $res['codigo'] ."' class='btn-floating grenn'><i class='material-icons'>edit</i></a> 
+                                <a href='editar.php?codigo=". $res['codigo'] ."' class='btn-floating grenn'><i class='material-icons'>edit</i></a>
                                 </header>
                                 <div class='accordion__content'>
                                 <p class='accordion__description'>
