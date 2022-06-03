@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Maio-2022 às 13:35
+-- Tempo de geração: 27-Maio-2022 às 19:31
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -34,17 +34,18 @@ CREATE TABLE `livros` (
   `editora` varchar(200) NOT NULL,
   `paginas` int(11) NOT NULL,
   `publicacao` date DEFAULT NULL,
-  `data_cadastro` datetime NOT NULL
+  `data_cadastro` datetime NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'disponivel'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `livros`
 --
 
-INSERT INTO `livros` (`codigo`, `titulo`, `autor`, `editora`, `paginas`, `publicacao`, `data_cadastro`) VALUES
-(' teste2 ', 'Harry Potter e A Pedra Filosofal', 'JK Rowling', 'América', 2395, '2006-04-02', '0000-00-00 00:00:00'),
-('codigoDoLivro     ', 'Titulo do Livro', 'Autor do Livro', 'Editora do Livro', 1234, '1988-02-22', '0000-00-00 00:00:00'),
-('teste1', 'Dom Casmurro', 'Machado de Assis', 'Lorem', 350, '1984-01-01', '0000-00-00 00:00:00');
+INSERT INTO `livros` (`codigo`, `titulo`, `autor`, `editora`, `paginas`, `publicacao`, `data_cadastro`, `status`) VALUES
+(' teste2 ', 'Harry Potter e A Pedra Filosofal', 'JK Rowling', 'América', 2395, '2006-04-02', '0000-00-00 00:00:00', 'disponivel'),
+('codigoDoLivro     ', 'Titulo do Livro', 'Autor do Livro', 'Editora do Livro', 1234, '1988-02-22', '0000-00-00 00:00:00', 'disponivel'),
+('teste1', 'Dom Casmurro', 'Machado de Assis', 'Lorem', 350, '1984-01-01', '0000-00-00 00:00:00', 'disponivel');
 
 --
 -- Índices para tabelas despejadas
