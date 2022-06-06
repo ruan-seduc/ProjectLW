@@ -1,0 +1,90 @@
+/***** tms-navbar ***************************/
+body {
+    height: 100%;
+    width: 100%;
+    font-family: "Nunito", sans-serif;
+    background-color: rgb(237, 213, 178);
+}
+
+.heading-of-div {
+    font-size: 4vw;
+    font-family: 'Nunito', sans-serif;
+}
+
+.para {
+    font-size: 1.3vw;
+    font-family: 'Nunito', sans-serif;
+}
+
+.main-content {
+    width: 100%;
+    margin-left: 0px;
+}
+
+.img-of-person {
+    margin: auto;
+    width: 15vw;
+    height: 15vw
+}
+
+.card-bg-p {
+    background: inherit;
+    border: none;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: rgb(255, 255, 255);
+    background-color: rgb(90, 34, 34);
+}
+
+a:hover {
+    color: rgb(56, 17, 17);
+}
+
+/*Left handside divs*/
+.div-left {
+    background-color: rgb(147, 82, 74);
+    height: 100%;
+    width: 20%;
+    margin: 0px;
+    float: left;
+    position: fixed;
+}
+
+.div-right-1,
+.div-right-3 {
+    background-color: rgb(237, 213, 178);
+    height: auto;
+    width: 80%;
+    margin: 0px;
+    float: right;
+    text-align: center;
+}
+
+.div-right-2,
+.div-right-5 {
+    background-color: #8A2BE2;
+    height: 100%;
+    width: 80%;
+    margin: 0px;
+    float: right;
+}
+
+.div-right-4 {
+    background-color: #8A2BE2;
+    height: auto;
+    width: 80%;
+    margin: 0px;
+    float: right;
+}
+
+/*intro-video changes*/
+.video-link {
+    width: 30%;
+}
+
+/*aboutYour Self*/
+.details-of-per {
+    width: 65%;
+}

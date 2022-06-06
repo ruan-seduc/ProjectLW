@@ -2,6 +2,8 @@
     session_start();
     include('verifica_login.php');
     include "conexaoCrud.php";
+
+
     $resultado = mysqli_query($conexao, "select * from livros");
     
     if(isset($_SESSION['msg'])) {
@@ -28,20 +30,37 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
     <!--Custom CSS-->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <!--meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
-    <div>
-        <h3 class="center">Dashboard 2.0</h3>
-        <br>
+    <header>
+        <nav class="fixed-top">
+        </nav>
+    </header>
+    <div class="container-fluid">
 
-        <section class='accordion container'>
-            <div class='accordion__container'>
+        <div class="main">
+            <h3 class="text-center">Sistema Controle de Livros</h3>
+            <br>
+            <div class="text-center">
+                <form action="">
+                    <input name="busca" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>"
+                        placeholder="Digite os termos de pesquisa" type="text">
+                    <button type="submit">Pesquisar</button>
+                </form>
+            </div>
+            <div class="float-right">
+                <a class="btn btn-dark control-position" href="adicionar.php" role="button">+ Adicionar</a>
+            </div>
 
-                <?php 
+
+            <section class='accordion container'>
+                <div class='accordion__container'>
+
+                    <?php 
                  while( $res = mysqli_fetch_array($resultado)){
                     echo "
                         <div class='accordion__item'>
@@ -64,11 +83,12 @@
                         </div>";
                 }
                 ?>
-            </div>
-        </section>
+                </div>
+            </section>
+        </div>
+    </div>
 
-        <a href="adicionar.php">Adicionar</a><br><br>
-        <h2><a href="logout.php">Sair</a></h2>
+    <h2><a href="logout.php">Sair</a></h2>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
