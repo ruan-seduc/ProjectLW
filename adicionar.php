@@ -4,7 +4,7 @@ include('verifica_login.php');
 include "conexaoCrud.php";
 
 if (isset($_POST['codigo'])) {
-    $codigo = $_POST['codigo'];
+    $codigo = trim($_POST['codigo']);
     $titulo = $_POST['titulo'];
     $autor = $_POST['autor'];
     $editora = $_POST['editora'];
@@ -58,6 +58,8 @@ mysqli_close($conexao);
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
@@ -66,6 +68,15 @@ mysqli_close($conexao);
 <body>
     <header>
         <nav class="fixed-top">
+            <a href="home.php"><i class='material-icons' style="
+    color: white;
+    margin-left: -10px;">arrow_back</i>
+            </a>
+            <a href="logout.php">
+                <i class='material-icons' style="
+    color: white;
+    margin-left: 900px;">power_settings_new</i>
+            </a>
         </nav>
     </header>
     <div class="main">
@@ -74,9 +85,9 @@ mysqli_close($conexao);
             <?php
                     if(isset($_SESSION['codigo_duplicado'])):
                     ?>
-            <div>
-                <p>ERRO: Você não pode cadastrar dois livros com o mesmo código.</p>
-            </div>
+            <script type="text/javascript">
+            alert("Erro: vocÊ não pode cadastrar dois livros com o mesmo código!")
+            </script>
             <?php
                     endif;
                     unset($_SESSION['codigo_duplicado']);
@@ -109,7 +120,6 @@ mysqli_close($conexao);
                 </div>
                 <button type="submit" class="btn btn-primary">CADASTRAR</button>
             </form>
-            <a href="home.php" class="waves-effect waves-light blue btn" style="width:100%"> VOLTAR </a>
         </div>
 
         <!--JavaScript-->

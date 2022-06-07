@@ -19,14 +19,14 @@
     
 
     if (isset($_POST['codigo'])) {
-        $codigo = $_POST['codigo'];
+        $codigo = trim($_POST['codigo']);
         $nome = $_POST['nome'];
         $turma = $_POST['turma'];
         $emprestado = $_POST['data'];
         $prazo = $_POST['prazo'];
     
-        $sql = "select count(*) as total from livros where codigo = '$codigo'";
-        $result = mysqli_query($conexao, $sql);
+        $sql = "select count(*) as total from registro where codigo = '$codigo'";
+        $result = mysqli_query($conexaob, $sql);
         $row = mysqli_fetch_assoc($result);
     
     if($row['total'] == 1) {
@@ -35,15 +35,16 @@
             exit;
         
     }
-        if (mysqli_query($conexaob, "insert into registro (codigo, nome, turma, emprestado, prazo) Value ('$codigo','$nome','$turma','$emprestado','$prazo') ")) {
+        if (mysqli_query($conexaob, "insert into registro (codigo, nome, turma, data, prazo) Value ('$codigo','$nome','$turma','$emprestado','$prazo') ")) {
             $sqlb = "UPDATE livros SET status = 'emprestado' WHERE codigo = '$id'";
             if(mysqli_query($conexao, $sqlb)){
-                $_SESSION['msg'] = "Atualizado com Sucesso!";
-                 echo "
-            <div>
-            <p>Empréstimo Efetuado com Sucesso!.</p>
-            </div>
-            ";
+                ?>
+<script type="text/javascript">
+alert("Empréstimo realizado com sucesso!")
+window.location.href = "home.php";
+</script>
+<?php
+
             }
     
         } else {
@@ -66,6 +67,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
@@ -76,6 +79,15 @@
 <body>
     <header>
         <nav class="fixed-top">
+            <a href="home.php"><i class='material-icons' style="
+    color: white;
+    margin-left: -10px;">arrow_back</i>
+            </a>
+            <a href="logout.php">
+                <i class='material-icons' style="
+    color: white;
+    margin-left: 900px;">power_settings_new</i>
+            </a>
         </nav>
     </header>
     <div class="main">
@@ -119,11 +131,6 @@
                 </form>
                 <a href="home.php" style="width:100%"> VOLTAR </a>
             </div>
-
-
-
-            <a href="adicionar.php">Adicionar</a><br><br>
-            <h2><a href="logout.php">Sair</a></h2>
         </div>
     </div>
 

@@ -38,6 +38,15 @@
 <body>
     <header>
         <nav class="fixed-top">
+            <a href="home.php"><i class='material-icons' style="
+    color: white;
+    margin-left: -10px;">arrow_back</i>
+            </a>
+            <a href="logout.php">
+                <i class='material-icons' style="
+    color: white;
+    margin-left: 900px;">power_settings_new</i>
+            </a>
         </nav>
     </header>
     <div class="container-fluid">
@@ -47,8 +56,7 @@
             <br>
             <div class="text-center">
                 <form action="">
-                    <input name="busca" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>"
-                        placeholder="Digite os termos de pesquisa" type="text">
+                    <input name="busca" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" type="text">
                     <button type="submit">Pesquisar</button>
                 </form>
             </div>
@@ -57,7 +65,8 @@
             </div>
 
 
-            <section class='accordion container'>
+            <section class='accordion container' style="
+    margin-top: -130px;">
                 <div class='accordion__container'>
 
                     <?php 
@@ -67,9 +76,9 @@
                             <header class='accordion__header'>
                                 <i class='bx bx-plus accordion__icon'></i>
                                 <h3 class='accordion__title'>". $res['codigo']. " - ". $res['titulo']. "</h3>
-                                <a href='deletar.php?codigo=". $res['codigo'] ."' class='btn-floating red'><i class='material-icons'>close</i></a>
-                                <a href='editar.php?codigo=". $res['codigo'] ."' class='btn-floating grenn'><i class='material-icons'>edit</i></a>
-                                <a href='emprestimo.php?codigo=". $res['codigo'] ."'><i class='material'>emprestar/devolver</i></a>
+                                <a href='deletar.php?codigo=". $res['codigo'] ."'><i class='material-icons' style='color: black;'>close</i></a>
+                                <a href='editar.php?codigo=". $res['codigo'] ."' ><i class='material-icons' style='color: black;'>edit</i></a>
+                                <a href='emprestimo.php?codigo=". $res['codigo'] ."'><i class='material-icons' style='color: black;' >app_registration</i></a>
                                 </header>
                                 <div class='accordion__content'>
                                 <p class='accordion__description'>
@@ -88,10 +97,7 @@
         </div>
     </div>
 
-    <h2><a href="logout.php">Sair</a></h2>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
     </script>
     <script src="assets/js/main.js"></script>

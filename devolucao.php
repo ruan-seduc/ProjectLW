@@ -6,12 +6,42 @@
     
     if(isset($_GET['codigo'])){
         $id = $_GET['codigo'];
-        $resultado = mysqli_query($conexao, "Select * from livros where codigo = '$id'");
+        $resultado = mysqli_query($conexaob, "Select * from registro where codigo = '$id'");
         $dados = mysqli_fetch_array($resultado);
+    }
 
-        $sql_controle = mysqli_query($conexaob, "Select * from registro where codigo = '$id'");
-        $emprestimo_dados = mysqli_fetch_array($sql_controle);
-    } 
+    if (isset($_POST['codigo'])) {
+        $codigo = trim($_POST['codigo']);
+        $nome = $_POST['nome'];
+        $turma = $_POST['turma'];
+        $emprestado = $_POST['data'];
+        $prazo = $_POST['prazo'];
+        $devolucao = $_POST['devolucao'];
+    
+        $sql = "select count(*) as total from registro where codigo = '$codigo'";
+        $result = mysqli_query($conexaob, $sql);
+        $row = mysqli_fetch_assoc($result);
+
+        if (mysqli_query($conexaob, "delete from registro where codigo = '$codigo'")) {
+            $sqlb = "UPDATE livros SET status = 'disponivel' WHERE codigo = '$codigo'";
+            if(mysqli_query($conexao, $sqlb)){
+                ?>
+<script type="text/javascript">
+alert("Livro devolvido com sucesso!")
+window.location.href = "home.php";
+</script>
+<?php
+
+            }
+        }}
+        
+     else {
+    
+            echo "
+            <div>
+            <p>Desculpe, algo não funcionou!</p>
+            </div>";
+        }
     
 ?>
 
@@ -22,6 +52,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -33,6 +65,15 @@
 <body>
     <header>
         <nav class="fixed-top">
+            <a href="home.php"><i class='material-icons' style="
+    color: white;
+    margin-left: -10px;">arrow_back</i>
+            </a>
+            <a href="logout.php">
+                <i class='material-icons' style="
+    color: white;
+    margin-left: 900px;">power_settings_new</i>
+            </a>
         </nav>
     </header>
     <div class="main">
@@ -58,30 +99,33 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nome</label>
-                        <input class="form-control" type="text" name="nome"
-                            value=" <?php echo $emprestimo_dados["nome"] ?>" required>
+                        <input class="form-control" type="text" name="nome" value=" <?php echo $dados["nome"] ?>"
+                            required>
                     </div>
                     <div class=" mb-3">
                         <label class="form-label">Turma</label>
-                        <input class="form-control" type="text" name="turma" required>
+                        <input class="form-control" type="text" name="turma" value=" <?php echo $dados["turma"] ?>"
+                            required>
                     </div>
-                    <div class="mb-3">
+                    <div class=" mb-3">
                         <label class="form-label">Data do Empréstimo</label>
-                        <input class="form-control" type="date" name="data" required>
+                        <input class="form-control" type="text" name="data" value=" <?php echo $dados["data"] ?>"
+                            required>
                     </div>
-                    <div class="mb-3">
+                    <div class=" mb-3">
                         <label class="form-label">Prazo de Devolução</label>
-                        <input class="form-control" type="text" name="prazo" required>
+                        <input class="form-control" type="text" name="prazo"
+                            value=" <?php echo $dados["prazo"]." dias" ?>" required>
                     </div>
+                    <div class=" mb-3">
+                        <label class="form-label">Data da Devolução</label>
+                        <input class="form-control" type="date" name="devolucao" required>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
                 <a href="home.php" style="width:100%"> VOLTAR </a>
             </div>
-
-
-
-            <a href="adicionar.php">Adicionar</a><br><br>
-            <h2><a href="logout.php">Sair</a></h2>
         </div>
     </div>
 

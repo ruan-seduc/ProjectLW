@@ -51,10 +51,6 @@ session_start();
                                 </div>
 
                                 <div class="d-flex align-items-center">
-                                    <div class="form-check">
-                                        <input type="checkbox" name="remember" id="remember" class="form-check-input">
-                                        <label for="remember" class="form-check-label">Manter conectado</label>
-                                    </div>
                                     <button type="submit" class="btn btn-primary ms-auto btnmain">
                                         Login
                                     </button>
