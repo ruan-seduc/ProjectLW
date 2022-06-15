@@ -54,9 +54,11 @@
         <div class="main">
             <h3 class="text-center">Sistema Controle de Livros</h3>
             <br>
-            <div class="input-group search d-flex justify-content-center">
-                <input id="searchbar" class="form-control rounded" onkeyup="search_books()" type="text" name="search"
-                    autocomplete="off" placeholder=" Pesquisar Livros">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-sm input-group search justify-content-center">
+                    <input id="searchbar" class="form-control rounded" onkeyup="search_books()" type="text"
+                        name="search" autocomplete="off" placeholder=" Pesquisar Livros">
+                </div>
             </div>
             <div class="float-right">
                 <a class="btn btn-dark control-position" href="adicionar.php" role="button">+ Adicionar</a>
@@ -64,9 +66,10 @@
 
 
             <section class='accordion container'>
-                <div class='accordion__container'>
+                <div class="row">
+                    <div class='accordion__container'>
 
-                    <?php 
+                        <?php 
                  while( $res = mysqli_fetch_array($resultado)){
                     echo "
                         <div class='accordion__item'>
@@ -89,9 +92,10 @@
                         </div>";
                 }
                 ?>
-                </div>
+                    </div>
             </section>
         </div>
+    </div>
     </div>
 
     <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
