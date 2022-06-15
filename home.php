@@ -26,11 +26,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!--Accordion CSS and boxicons-->
-    <link rel="stylesheet" href="assets/css/accordion.css">
+    <link rel="stylesheet" href="css/accordion.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
     <!--Custom CSS-->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!--meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -54,19 +54,16 @@
         <div class="main">
             <h3 class="text-center">Sistema Controle de Livros</h3>
             <br>
-            <div class="text-center">
-                <form action="">
-                    <input name="busca" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" type="text">
-                    <button type="submit">Pesquisar</button>
-                </form>
+            <div class="input-group search d-flex justify-content-center">
+                <input id="searchbar" class="form-control rounded" onkeyup="search_books()" type="text" name="search"
+                    autocomplete="off" placeholder=" Pesquisar Livros">
             </div>
             <div class="float-right">
                 <a class="btn btn-dark control-position" href="adicionar.php" role="button">+ Adicionar</a>
             </div>
 
 
-            <section class='accordion container' style="
-    margin-top: -130px;">
+            <section class='accordion container'>
                 <div class='accordion__container'>
 
                     <?php 
@@ -101,6 +98,7 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
     </script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/search.js"></script>
 </body>
 
 </html>

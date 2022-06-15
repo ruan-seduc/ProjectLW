@@ -1,12 +1,11 @@
 <?php
     session_start();
     include('verifica_login.php');
-    include "conexaoCrud.php";
-    include "conexaoControle.php";   
+    include "conexao.php";
     
     if(isset($_GET['codigo'])){
         $id = $_GET['codigo'];
-        $resultado = mysqli_query($conexaob, "Select * from registro where codigo = '$id'");
+        $resultado = mysqli_query($conexao, "Select * from registro where codigo = '$id'");
         $dados = mysqli_fetch_array($resultado);
     }
 
@@ -19,10 +18,10 @@
         $devolucao = $_POST['devolucao'];
     
         $sql = "select count(*) as total from registro where codigo = '$codigo'";
-        $result = mysqli_query($conexaob, $sql);
+        $result = mysqli_query($conexao, $sql);
         $row = mysqli_fetch_assoc($result);
 
-        if (mysqli_query($conexaob, "delete from registro where codigo = '$codigo'")) {
+        if (mysqli_query($conexao, "delete from registro where codigo = '$codigo'")) {
             $sqlb = "UPDATE livros SET status = 'disponivel' WHERE codigo = '$codigo'";
             if(mysqli_query($conexao, $sqlb)){
                 ?>
@@ -58,7 +57,7 @@ window.location.href = "home.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
 </head>
 
@@ -77,55 +76,50 @@ window.location.href = "home.php";
         </nav>
     </header>
     <div class="main">
-        <h1 class="text-center">
-            Emprestar Livro</h1>
-        <div class="row p-5 main-content">
-            <div style="margin:auto;width:40%">
-                <?php
+        <h3 class="text-center">
+            Devolver Livro</h3>
+        <div style="margin:auto;width:40%">
+            <?php
                     if(isset($_SESSION['codigo_duplicado'])):
                     ?>
-                <div>
-                    <p>ERRO: O livro parece já estar emprestado!.</p>
-                </div>
-                <?php
+            <div>
+                <p>ERRO: O livro parece já estar emprestado!.</p>
+            </div>
+            <?php
                     endif;
                     unset($_SESSION['codigo_duplicado']);
                     ?>
-                <form method="post" action="">
-                    <div class="mb-3">
-                        <label class="form-label">Código do Livro</label>
-                        <input class="form-control" type="text" name="codigo" value=" <?php echo $dados["codigo"] ?> "
-                            required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Nome</label>
-                        <input class="form-control" type="text" name="nome" value=" <?php echo $dados["nome"] ?>"
-                            required>
-                    </div>
-                    <div class=" mb-3">
-                        <label class="form-label">Turma</label>
-                        <input class="form-control" type="text" name="turma" value=" <?php echo $dados["turma"] ?>"
-                            required>
-                    </div>
-                    <div class=" mb-3">
-                        <label class="form-label">Data do Empréstimo</label>
-                        <input class="form-control" type="text" name="data" value=" <?php echo $dados["data"] ?>"
-                            required>
-                    </div>
-                    <div class=" mb-3">
-                        <label class="form-label">Prazo de Devolução</label>
-                        <input class="form-control" type="text" name="prazo"
-                            value=" <?php echo $dados["prazo"]." dias" ?>" required>
-                    </div>
-                    <div class=" mb-3">
-                        <label class="form-label">Data da Devolução</label>
-                        <input class="form-control" type="date" name="devolucao" required>
-                    </div>
+            <form method="post" action="">
+                <div class="mb-3">
+                    <label class="form-label">Código do Livro</label>
+                    <input class="form-control" type="text" name="codigo" value=" <?php echo $dados["codigo"] ?> "
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nome</label>
+                    <input class="form-control" type="text" name="nome" value=" <?php echo $dados["nome"] ?>" required>
+                </div>
+                <div class=" mb-3">
+                    <label class="form-label">Turma</label>
+                    <input class="form-control" type="text" name="turma" value=" <?php echo $dados["turma"] ?>"
+                        required>
+                </div>
+                <div class=" mb-3">
+                    <label class="form-label">Data do Empréstimo</label>
+                    <input class="form-control" type="text" name="data" value=" <?php echo $dados["data"] ?>" required>
+                </div>
+                <div class=" mb-3">
+                    <label class="form-label">Prazo de Devolução</label>
+                    <input class="form-control" type="text" name="prazo" value=" <?php echo $dados["prazo"]." dias" ?>"
+                        required>
+                </div>
+                <div class=" mb-3">
+                    <label class="form-label">Data da Devolução</label>
+                    <input class="form-control" type="date" name="devolucao" required>
+                </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                <a href="home.php" style="width:100%"> VOLTAR </a>
-            </div>
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </form>
         </div>
     </div>
 

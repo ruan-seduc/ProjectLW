@@ -1,7 +1,7 @@
 <?php
     session_start();
     include('verifica_login.php');
-    include_once "conexaoCrud.php";
+    include_once "conexao.php";
 
 
     $id = $_GET['codigo'];

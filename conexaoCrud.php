@@ -4,7 +4,7 @@
 $servidor = "localhost";
 $usuario ="root";
 $senha = "";
-$nomeBanco = "crud_books";
+$nomeBanco = "books_system";
 
 $conexao = mysqli_connect($servidor,$usuario,$senha,$nomeBanco);
 mysqli_set_charset($conexao, "utf8");

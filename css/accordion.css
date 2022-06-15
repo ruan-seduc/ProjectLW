@@ -45,7 +45,7 @@ body {
 .accordion {
     display: grid;
     align-content: center;
-    height: 100vh;
+    margin-top: 2vh
 }
 
 .accordion__container {

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('verifica_login.php');
-include "conexaoCrud.php";
+include "conexao.php";
 
 if (isset($_POST['codigo'])) {
     $codigo = trim($_POST['codigo']);
@@ -22,7 +22,7 @@ if($row['total'] == 1) {
         exit;
 	
 }
-    if (mysqli_query($conexao, "insert into livros (codigo, titulo, autor, editora, paginas, publicacao) Value ('$codigo','$titulo','$autor','$editora','$paginas','$publicacao') ")) {
+    if (mysqli_query($conexao, "insert into livros (codigo, titulo, autor, editora, paginas, publicacao, data_cadastro) values ('$codigo','$titulo','$autor','$editora','$paginas','$publicacao', NOW()) ")) {
     ?>
 <script type="text/javascript">
 alert("Livro adicionado com sucesso!")
@@ -80,7 +80,7 @@ mysqli_close($conexao);
         </nav>
     </header>
     <div class="main">
-        <div style="margin:auto;width:40%">
+        <div style="margin:auto;width:40vw">
             <h4 class="center">TELA DE CADASTRO</h4><BR>
             <?php
                     if(isset($_SESSION['codigo_duplicado'])):
@@ -118,7 +118,7 @@ mysqli_close($conexao);
                     <label class="form-label">Data de Publicação</label>
                     <input class="form-control" type="date" name="publicacao" required>
                 </div>
-                <button type="submit" class="btn btn-primary">CADASTRAR</button>
+                <button type="submit" class="btn btn-dark">CADASTRAR</button>
             </form>
         </div>
 
