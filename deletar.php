@@ -3,7 +3,6 @@
     include('verifica_login.php');
     include_once "conexao.php";
 
-
     $id = $_GET['codigo'];
     if( mysqli_query($conexao, "delete from livros where codigo = '$id'")){
         session_start();
@@ -12,8 +11,4 @@
     } else{
         $_SESSION['msg'] = "Falha na remoção";
     }
-
-
-
-
 ?>

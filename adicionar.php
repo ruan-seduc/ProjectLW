@@ -52,78 +52,89 @@ mysqli_close($conexao);
 <html>
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style-form.css">
+
+    <title>Adicionar Livro</title>
 </head>
 
-<body>
-    <header>
-        <nav class="fixed-top">
-            <a href="home.php"><i class='material-icons' style="
-    color: white;
-    margin-left: -10px;">arrow_back</i>
-            </a>
-            <a href="logout.php">
-                <i class='material-icons' style="
-    color: white;
-    margin-left: 900px;">power_settings_new</i>
-            </a>
+<body class="body-form">
+    <div class="container">
+        <!-- NavBar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark rounded">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.php">Easy</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <div class="d-flex">
+                        <div class="me-2">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="home.php">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="logout.php">Sair</a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
         </nav>
-    </header>
-    <div class="main">
-        <div style="margin:auto;width:40vw">
-            <h4 class="center">TELA DE CADASTRO</h4><BR>
-            <?php
-                    if(isset($_SESSION['codigo_duplicado'])):
-                    ?>
-            <script type="text/javascript">
-            alert("Erro: vocÊ não pode cadastrar dois livros com o mesmo código!")
-            </script>
-            <?php
-                    endif;
-                    unset($_SESSION['codigo_duplicado']);
-                    ?>
-            <form method="post" action="">
+        <!--//NavBar-->
+        <h1 class="text-start text-white mt-5 pt-4 pb-3">Adicionar Livro</h1>
 
-                <div class="mb-3">
-                    <label class="form-label">Código do Livro</label>
-                    <input class="form-control" type="text" name="codigo" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Título</label>
-                    <input class="form-control" type="text" name="titulo" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Autor</label>
-                    <input class="form-control" type="text" name="autor" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Editora</label>
-                    <input class="form-control" type="text" name="editora" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Nº de Páginas</label>
-                    <input class="form-control" type="text" name="paginas" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Data de Publicação</label>
-                    <input class="form-control" type="date" name="publicacao" required>
-                </div>
-                <button type="submit" class="btn btn-dark">CADASTRAR</button>
-            </form>
+        <div id="controlDiv" class="row justify-content-start">
+            <div class="col-8 text-white">
+                <form method="post" action="">
+
+                    <div class="mb-3">
+                        <label class="form-label">Código do Livro</label>
+                        <input class="form-control" type="text" name="codigo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Título</label>
+                        <input class="form-control" type="text" name="titulo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Autor</label>
+                        <input class="form-control" type="text" name="autor" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Editora</label>
+                        <input class="form-control" type="text" name="editora" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nº de Páginas</label>
+                        <input class="form-control" type="text" name="paginas" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Data de Publicação</label>
+                        <input class="form-control" type="date" name="publicacao" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark">ADICIONAR</button>
+                </form>
+            </div>
         </div>
+    </div>
 
-        <!--JavaScript-->
-        <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!--JS-->
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

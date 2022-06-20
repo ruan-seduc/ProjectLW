@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style-home.css">
     <title>Sistema de Login</title>
 </head>
 
@@ -43,6 +43,13 @@ session_start();
                                     <input type="text" class="form-control" name="usuario" value="" required autofocus>
                                 </div>
 
+                                <style>
+                                .form-control:focus {
+                                    border-color: rgb(102, 52, 45) !important;
+                                    box-shadow: 0 0 0 0.12rem rgba(102, 52, 45, 0.719);
+                                }
+                                </style>
+
                                 <div class="mb-3">
                                     <div class="mb-2 w-100">
                                         <label class="text-muted" for="password">Password</label>
@@ -51,7 +58,7 @@ session_start();
                                 </div>
 
                                 <div class="d-flex align-items-center">
-                                    <button type="submit" class="btn btn-primary ms-auto btnmain">
+                                    <button type="submit" class="btn btn-dark ms-auto btnmain">
                                         Login
                                     </button>
                                 </div>
