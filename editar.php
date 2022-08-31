@@ -11,13 +11,22 @@ if(isset($_GET['codigo'])){
 } 
 
 if(isset($_POST['codigo'])){
-    $codigo = $_POST['codigo'];
+    $codigo = trim($_POST['codigo']);
     $titulo = $_POST['titulo'];
     $autor = $_POST['autor'];
     $editora = $_POST['editora'];
     $paginas = $_POST['paginas'];
     $publicacao = $_POST['publicacao'];
     $publicacao = date("Y-m-d",strtotime(str_replace('/','-',$publicacao))); 
+
+    $sqlc = "select count(*) as total from livros where codigo = '$codigo'";
+    $resultc = mysqli_query($conexao, $sqlc);
+    $rowc = mysqli_fetch_assoc($resultc);
+
+    if($row['total'] == 1) {
+        echo("<script>alert('Erro: código duplicado! Você não pode cadastrar dois livros com o mesmo código.'); window.location.href = 'adicionar.php'</script>");
+        exit;
+    }
 
     $sql = "UPDATE livros SET codigo = '$codigo', titulo = '$titulo', autor = '$autor', editora = '$editora', paginas = '$paginas', publicacao = '$publicacao' WHERE codigo = '$id'";
     if(mysqli_query($conexao, $sql)){
@@ -94,7 +103,8 @@ if(isset($_POST['codigo'])){
                 <form method="post" action="">
                     <div class="mb-3">
                         <label class="form-label">Código</label>
-                        <input class="form-control" type="text" name="codigo" value=" <?php echo $dados["codigo"] ?> ">
+                        <input class="form-control" type="text" name="codigo"
+                            value=" <?php echo trim($dados["codigo"]) ?> ">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Título</label>

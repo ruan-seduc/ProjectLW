@@ -17,10 +17,8 @@ if (isset($_POST['codigo'])) {
     $row = mysqli_fetch_assoc($result);
 
 if($row['total'] == 1) {
-	$_SESSION['codigo_duplicado'] = true;
-        header('Location: adicionar.php');
-        exit;
-	
+	echo("<script>alert('Erro: código duplicado! Você não pode cadastrar dois livros com o mesmo código.'); window.location.href = 'adicionar.php'</script>");
+	exit;
 }
     if (mysqli_query($conexao, "insert into livros (codigo, titulo, autor, editora, paginas, publicacao, data_cadastro) values ('$codigo','$titulo','$autor','$editora','$paginas','$publicacao', NOW()) ")) {
     ?>
